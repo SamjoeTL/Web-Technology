@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="bg-black">
+        <div class="h-screen w-screen flex justify-center items-center">
+            <form class="bg-rose-800 shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[500px]" action="javascript:void(0)">
+                <div class="flex items-center justify-center">
+                    <div>
+                        <h1 class="font-bold text-center text-3xl text-white pt-4 mb-8 ">Fibonacci Series</h1>
+                        <label class="text-white" for="row" >Input total row</label>
+                        <input type="number" id="row" class="shadow appearance-none border rounded w-full py-2 px-3 text-black mb-4">
+                        <label class="text-white" for="Firstindex">input first row</label>
+                        <input type="number" id="Firstindex" class="shadow appearance-none border rounded w-full py-2 px-3 text-black mb-4"/>
+                        <label class="text-white" for="Secondindex">input second row</label>
+                        <input type="number" id="Secondindex" class="shadow appearance-none border rounded w-full py-2 px-3 text-black mb-4"/>
+                        <div class="flex justify-center items-center mt-8">
+                            <button id="button" onclick="fibonacci()" class="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+                        </div>
+                        <p id="rowTotal"></p>
+                        <p id="resultTotal"></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+      
+    <script>
+      document.getElementById("button").addEventListener("click", fibonacci);
+      function fibonacci() 
+      {
+        var row = document.getElementById("row").value;
+        var firstnumber = document.getElementById("Firstindex").value;
+        var secondnumber = document.getElementById("Secondindex").value;
+        var rowTotal = document.getElementById("rowTotal");
+
+        let Fn_1 = 0;
+        let Fn_2 = 1;
+        let Fn = 0;
+        let arr = [];
+        for (let i = 0; i < row; i++) {
+          arr.push(Fn_1);
+          Fn = Fn_1 + Fn_2;
+          Fn_1 = Fn_2;
+          Fn_2 = Fn;
+        }
+        rowTotal.innerHTML = arr;
+
+        var resultTotal = document.getElementById("resultTotal");
+        var total = 0;
+
+        //Add from index 1 and index 2 the row that already inputed
+        resultTotalwithIndex = arr[firstnumber - 1] + arr[secondnumber - 1];
+        resultTotal.innerHTML = resultTotalwithIndex;
+      }
+    </script>
+  </body>
+</html>
